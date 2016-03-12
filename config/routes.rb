@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   get "welcome/hello"
   root to: "welcome#hello"
   resources :wikis
+
+# resources [devise_for :users] do
+#   member do
+#     get :wikis
+#   end
+# end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
