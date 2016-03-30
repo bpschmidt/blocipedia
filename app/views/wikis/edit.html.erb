@@ -16,5 +16,7 @@
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
 
+    <%= button_to "Delete wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this wiki?' } %>
+
   </div>
 </div>

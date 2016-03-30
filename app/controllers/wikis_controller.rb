@@ -38,7 +38,7 @@ class WikisController < ApplicationController
     @wiki.title = (params[:wiki][:title])
     @wiki.body =  (params[:wiki][:body])
     @wiki.save
-    redirect_to @wiki
+    redirect_to current_user
   end
 
   private

@@ -12,7 +12,7 @@ Last sign in: <%= current_user.last_sign_in_at %> <br></font></b>
       <%= wiki.body %>
       <br>
       <small> (<%= distance_of_time_in_words(wiki.created_at, Time.now) %> ago) <br>
-      <%= link_to "Click here to edit this wiki", "/wikis/:id(.:format)", class: 'btn btn-success' %></small>
+      <%= link_to "Edit or delete wiki", edit_wiki_path(wiki), class: 'btn btn-success' %></small>
     </li>
   <% end %>
 </ol>
