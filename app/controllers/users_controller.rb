@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    authorize current_user
 
   end
 end
