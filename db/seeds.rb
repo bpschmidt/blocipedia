@@ -22,7 +22,7 @@ require "faker"
     Wiki.create!(
       title: Faker::Company.buzzword,
       body: Faker::StarWars.quote,
-      user_id: Faker::Number.between(1, 26)
+      user_id: User.all.sample.id
     )
   end
 

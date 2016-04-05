@@ -1,0 +1,10 @@
+<ol>
+  <% @users.wikis.joins %>
+<% @wikis.each do |wiki| %>
+  <li>
+    <b><%= wiki.title %><br>
+    <%= wiki.body %></b><br>
+    <small>Submitted by:<%= wiki.user.email %></small>
+  </li>
+<% end %>
+</ol>
