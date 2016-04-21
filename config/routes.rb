@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   root to: "welcome#hello"
   resources :wikis
 
-  resources :users 
+  resources :users
+
+  resources :charges, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

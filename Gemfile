@@ -12,6 +12,10 @@ gem "pundit"
 
 gem 'faker'
 
+gem 'stripe'
+
+gem 'figaro', '1.0'
+
 gem 'bootstrap-sass'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

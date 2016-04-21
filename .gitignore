@@ -16,3 +16,7 @@
 !/log/.keep
 /tmp
 /config/initializers/setup_mail.rb
+
+# Ignore application configuration
+/config/application.yml
+/config/secrets.yml

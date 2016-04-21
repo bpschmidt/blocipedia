@@ -17,6 +17,7 @@ Last sign in: <%= current_user.last_sign_in_at %> <br></font></b>
   <% end %>
 </ol>
 
+<%= link_to "Downgrade", charge_path(id: "oklahoma"), method: :delete %>
 
 
 <%= render partial: "/wikis/form", locals: {wiki: current_user.wikis.new } %>

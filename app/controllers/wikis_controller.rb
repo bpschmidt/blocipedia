@@ -1,7 +1,8 @@
 
 class WikisController < ApplicationController
   def index
-    @wiki = current_user.wikis
+    @wikis = current_user.wikis
+    render "wikis/index.html.erb"
   end
 
   def show
