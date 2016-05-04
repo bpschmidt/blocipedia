@@ -1,10 +1,7 @@
 <%= form_for [wiki] do |f| %>
 
-<% if current_user.admin? || current_user.premium? %>
-  <div class="form-group">
-    <%= f.label :private, class: 'checkbox' do %>
-      <%= f.check_box :private %> Private wiki
-    <% end %>
+
+
 
 <b> Create a new wiki here: </b>
    <div class="form-group">
@@ -18,4 +15,12 @@
      <%= f.submit "Save", class: 'btn btn-success' %>
    </div>
 
+    <!-- HELLO    <%= current_user.role %>WORLD123 -->
+   <% if current_user.admin? || current_user.premium? %>
+     <div class="form-group">
+       <%= f.label :private, class: 'checkbox' do %>
+         <%= f.check_box :private %> Private wiki
+       <% end %>
+     </div>
+  <% end %>
  <% end %>

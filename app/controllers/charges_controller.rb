@@ -40,6 +40,15 @@ class ChargesController < ApplicationController
 
   def destroy
     current_user.update_attributes(:role => 'standard')
+
+    current_users_private_wikis = Wiki.where(private: true).where(user_id: current_user.id)
+
+
+    current_users_private_wikis.each do |wiki|
+      wiki.update_attributes(private: false)
+    end
+
+
     redirect_to :back, notice: "User has been successfully downgraded."
   end
 end
