@@ -1,39 +1,34 @@
 
 class WikisController < ApplicationController
 
-  # before_action :require_sign_in, except: [:index, :show]
+before_filter :authenticate_user!
+  #before_action :require_sign_in, except: [:index, :show]
   # before_action :authorize_user, except: [:index, :show]
   def index
-     @wikis = current_user.wikis
     if current_user.admin? || current_user.premium?
-      @wikis = Wiki.visible_to(current_user)
-      render "wikis/index.html.erb"
+      @wikis = Wiki.all
+    elsif current_user
+      @wikis = current_user.wikis + Wiki.where(private: false)
     else
-      flash[:alert] = "You are not authorized to see private wikis."
-      redirect_to new_user_session_path
+      @wikis = Wiki.where(private: false)
     end
-
-
-
-    # unless @wiki.public || current_user
-    #   flash[:alert] = "You must be signed in to view private wikis."
-    #   redirect_to new_session_path
-    # end
   end
 
   def show
-    # @wiki = Wiki.find(params[:id])
+     @wiki = Wiki.find(params[:id])
 
-    if current_user.admin? || current_user.premium?
-      @wiki = Wiki.visible_to(current_user)
-      render "wikis/show.html.erb"
-    else
-      flash[:alert] = "You are not authorized to see this private wiki."
-      redirect_to new_user_session_path
-    end
+
+    # if current_user.admin? || current_user.premium?
+    #   @wiki = Wiki.visible_to(current_user)
+    #   render "wikis/show.html.erb"
+    # else
+    #   flash[:alert] = "You are not authorized to see this private wiki."
+    #   #redirect_to new_user_session_path
+    # end
+
     # unless @wiki.public || current_user
     #   flash[:alert] = "You must be signed in to view private topics."
-    #   redirect_to new_session_path
+    #   redirect_to new_user_session_path
     # end
   end
 
@@ -54,6 +49,7 @@ class WikisController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
     @wiki.delete
     redirect_to current_user
   end
