@@ -14,6 +14,8 @@ gem 'faker'
 
 gem 'stripe'
 
+gem 'redcarpet'
+
 gem 'figaro', '1.0'
 
 gem 'bootstrap-sass'

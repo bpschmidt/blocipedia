@@ -20,4 +20,11 @@ class WikiPolicy <ApplicationPolicy
     end
   end
 
+  def destroy?
+    if @user.admin? || @record.user == @user
+      return true
+    else
+      return false
+    end
+  end
 end

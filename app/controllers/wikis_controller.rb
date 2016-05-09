@@ -1,4 +1,3 @@
-
 class WikisController < ApplicationController
 
 before_filter :authenticate_user!
