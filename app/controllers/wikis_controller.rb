@@ -4,13 +4,7 @@ before_filter :authenticate_user!
   #before_action :require_sign_in, except: [:index, :show]
   # before_action :authorize_user, except: [:index, :show]
   def index
-    if current_user.admin? || current_user.premium?
-      @wikis = Wiki.all
-    elsif current_user
-      @wikis = current_user.wikis + Wiki.where(private: false)
-    else
-      @wikis = Wiki.where(private: false)
-    end
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -52,6 +46,9 @@ before_filter :authenticate_user!
     @wiki.save
     redirect_to current_user
   end
+
+
+
 
   private
 

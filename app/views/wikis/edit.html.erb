@@ -16,6 +16,13 @@
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
 
+    <%= form_for Collaborator.new do |f| %>
+      <%= f.collection_select :user_id, User.not_already_collaborators(@wiki), :id, :email %>
+      <%= f.hidden_field :wiki_id, value: @wiki.id %>
+      <%= f.submit %>
+    <% end %>
+
+
     <%= button_to "Delete wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this wiki?' } %>
 
   </div>

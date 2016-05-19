@@ -12,5 +12,11 @@ class User < ActiveRecord::Base
   # #
 
   has_many :wikis
+  has_many :collaborators
 
+
+
+  def self.not_already_collaborators(wiki)
+    User.all - wiki.collaborating_users
+  end
 end

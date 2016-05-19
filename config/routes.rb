@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :wikis
 
   resources :users
+  resources :collaborators, only: :create
 
   resources :charges, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
